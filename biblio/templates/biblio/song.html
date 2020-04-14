@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table {border-style: solid; border-color: green; border-collapse: collapse}
+        td, th {padding: 10px 12px; text-align: left; border-style: solid; border-color: green}
+
+    </style>
 </head>
 <body>
     <h1> Play list</h1>
 
-    {% for elt in song %}
+    <table>
+        <thead>
+            <th>  <strong> Name   : </strong> </th>
+            <th> <strong> duration: </strong></th>
+            <th> <strong> album  : </strong> </th>
+            <th> <strong> lyrics  : </strong> </th>
+        </thead>
 
-        <a> <strong> Name : </strong> {{ elt.name}}</a> <br/>
-        <a> <strong> duration : </strong>{{ elt.duration}}</a> <br/>
-        <a> <strong> album : </strong>{{ elt.album}}</a> <br/>
-        <a> <strong> lyrics : </strong>{{ elt.lyrics}}</a> <br/>
+        <tbody>
+             {% for elt in song %}
 
-    <hr>
+                <tr>
+                    <td>  {{ elt.name}}</td>
+                    <td> {{ elt.duration}}</td>
+                    <td> {{ elt.album}}</td>
+                    <td> {{ elt.lyrics}}</td>
+                 </tr>
 
-    {% endfor %}
+
+
+             {% endfor %}
+
+
+
+        </tbody>
+
+    </table>
+
+
 
 
 </body>

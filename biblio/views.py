@@ -47,10 +47,16 @@ def picture_detail(request, name, year, month, day):
 def showSong(request):
 
     song = Song.objects.all()
-
-
-
     return  render(request, "biblio/song.html", context={'song': song})
+
+def add_song(request, name, duration, album, lyrics):
+
+    pass
+
+
+
+
+
 
 
 

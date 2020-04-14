@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <a> <strong> Detail:</strong> {{ category }}, {{ year }}, {{ month}} and {{ day}}</a>
+    </div>
+
+    <section>
+        <div>
+            {% load static %}
+            <img style="max-width: 7%;" src="{% static 'biblio/image/_w3css_img_nature.jpg' %}" alt="Mon image" />
+
+            {% for items in context.values %}
+
+                {% items %}
+
+            {% endfor}
+        
+
+        
+        </div>
+    </section>
+
+</body>
+</html>

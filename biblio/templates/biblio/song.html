@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Play list</h1>
+
+    {% for elt in song %}
+
+        <a> <strong> Name : </strong> {{ elt.name}}</a> <br/>
+        <a> <strong> duration : </strong>{{ elt.duration}}</a> <br/>
+        <a> <strong> album : </strong>{{ elt.album}}</a> <br/>
+        <a> <strong> lyrics : </strong>{{ elt.lyrics}}</a> <br/>
+
+    <hr>
+
+    {% endfor %}
+
+
+</body>
+</html>

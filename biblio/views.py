@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import request, HttpResponse
 from django.template import loader
-from biblio.models import Song, Album
+from biblio.models import Song, Album, Artist
 
 
 # Create your views here.
@@ -48,13 +48,25 @@ def showSong(request):
 
     song = Song.objects.all()
     album = Album.objects.all()
-    return  render(request, "biblio/song.html", context={'song': song, 'album': album})
+    artist = Artist.objects.all()
+    return  render(request, "biblio/song.html", context={'song': song, 'album': album, 'artist': artist})
 
 
 
-def add_song(request, name, duration, album, lyrics):
+def add_song(request):
 
-    pass
+    form = Song(request.POST or None)
+    if request.method == 'POST':
+        if request.POST.get('album') or request.POST.get('name'):
+            form.album = request.POST.get('album')
+            form.name = request.POST.get('name')
+            form.duration = request.POST.get('duration')
+            form.lyrics = request.POST.get('lyrics')
+            form.save()
+
+            return render(request, 'biblio/form.html', locals())
+    else:
+        return render(request, 'biblio/form.html', locals())
 
 
 

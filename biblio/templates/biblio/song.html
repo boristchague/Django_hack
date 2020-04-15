@@ -12,68 +12,95 @@
 <body>
     <h1> Play list</h1>
 
-    <table>
-        <thead>
-            <th>  <strong> Name   : </strong> </th>
-            <th> <strong> duration: </strong></th>
-            <th> <strong> album  : </strong> </th>
-            <th> <strong> lyrics  : </strong> </th>
-        </thead>
+        <section>
+            <table>
+                <thead>
+                    <th>  <strong> Name   : </strong> </th>
+                    <th> <strong> duration: </strong></th>
+                    <th> <strong> album  : </strong> </th>
+                    <th> <strong> lyrics  : </strong> </th>
+                </thead>
 
-        <tbody>
-             {% for elt in song %}
+                <tbody>
+                     {% for elt in song %}
 
-                <tr>
-                    <td>  {{ elt.name}}</td>
-                    <td> {{ elt.duration}}</td>
-                    <td> {{ elt.album}}</td>
-                    <td> {{ elt.lyrics}}</td>
-                 </tr>
+                        <tr>
+                            <td>  {{ elt.name}}</td>
+                            <td> {{ elt.duration}}</td>
+                            <td> {{ elt.album}}</td>
+                            <td> {{ elt.lyrics}}</td>
+                         </tr>
 
+                     {% endfor %}
 
+                </tbody>
+            </table>
+        </section>
+<br>
 
-             {% endfor %}
+    <br/>
 
+    <h1> Albums</h1>
+        <section>
+            <table>
+                <thead>
+                    <th>  <strong> Name   : </strong> </th>
+                    <th> <strong> Artist: </strong></th>
+                    <th> <strong> Release  : </strong> </th>
+                    <th> <strong> Production House  : </strong> </th>
 
+                </thead>
 
+                <tbody>
 
-        </tbody>
+                    {% for elt in album %}
 
-
-
-        <table>
-            <thead>
-                <th>  <strong> Name   : </strong> </th>
-                <th> <strong> duration: </strong></th>
-                <th> <strong> album  : </strong> </th>
-                <th> <strong> lyrics  : </strong> </th>
-
-            </thead>
-
-            <tbody>
-
-        {% for elt in album %}
-
-                <tr>
-                    <td>  {{ elt.name}}</td>
-                    <td> {{ elt.duration}}</td>
-                    <td> {{ elt.album}}</td>
-                    <td> {{ elt.lyrics}}</td>
-                 </tr>
-
-
-
-             {% endfor %}
-
-            </tbody>
-
-
-        </table>
-
-    </table>
+                        <tr>
+                            <td>  {{ elt.name}}</td>
+                            <td> {{ elt.artist_name}}</td>
+                            <td> {{ elt.release_date}}</td>
+                            <td> {{ elt.production_house}}</td>
+                         </tr>
 
 
 
+                     {% endfor %}
+
+                </tbody>
+
+
+            </table>
+        </section>
+
+ <br/>
+
+    <h1> Artists</h1>
+        <section>
+            <table>
+                <thead>
+                    <th>  <strong> Name   : </strong> </th>
+                    <th> <strong> Type musical: </strong></th>
+
+                </thead>
+
+                <tbody>
+
+                    {% for elt in artist %}
+
+                        <tr>
+                            <td>  {{ elt.name}}</td>
+                            <td> {{ elt.music_type}}</td>
+                         </tr>
+
+
+
+                     {% endfor %}
+
+                </tbody>
+
+
+            </table>
+        </section>
 
 </body>
 </html>

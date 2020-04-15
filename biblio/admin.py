@@ -21,6 +21,8 @@ class SongAdmin(admin.ModelAdmin):
     list_display = ("id",'album', 'name', "duration", "lyrics")
     list_editable = ('name', )
     search_fields = ('album', )
+    list_filter = ('name', 'album__name', 'album__artist_name')
+    search_fields = ['album']
 
     def duration_human_readable(self, obj):
         return time.strftime("%M:%S", time.gmtime(obj.duration))

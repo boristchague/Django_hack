@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import request, HttpResponse
 from django.template import loader
-from biblio.models import Song
+from biblio.models import Song, Album
 
 
 # Create your views here.
@@ -47,7 +47,10 @@ def picture_detail(request, name, year, month, day):
 def showSong(request):
 
     song = Song.objects.all()
-    return  render(request, "biblio/song.html", context={'song': song})
+    album = Album.objects.all()
+    return  render(request, "biblio/song.html", context={'song': song, 'album': album})
+
+
 
 def add_song(request, name, duration, album, lyrics):
 

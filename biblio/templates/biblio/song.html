@@ -36,7 +36,39 @@
 
 
 
+
         </tbody>
+
+
+
+        <table>
+            <thead>
+                <th>  <strong> Name   : </strong> </th>
+                <th> <strong> duration: </strong></th>
+                <th> <strong> album  : </strong> </th>
+                <th> <strong> lyrics  : </strong> </th>
+
+            </thead>
+
+            <tbody>
+
+        {% for elt in album %}
+
+                <tr>
+                    <td>  {{ elt.name}}</td>
+                    <td> {{ elt.duration}}</td>
+                    <td> {{ elt.album}}</td>
+                    <td> {{ elt.lyrics}}</td>
+                 </tr>
+
+
+
+             {% endfor %}
+
+            </tbody>
+
+
+        </table>
 
     </table>
 

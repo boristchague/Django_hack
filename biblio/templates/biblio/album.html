@@ -11,11 +11,13 @@
     </style>
 </head>
 <body>
-    <h1> Formulaire de création de Song </h1>
+
+<h1> Formulaire de création d'Album </h1>
+
     <section>
             <div class="container">
 
-                <form action="{% url "adding_song" %}" method="POST">
+                <form action="{% url "adding_album" %}" method="POST">
                     {% csrf_token %}
                     <table>
                          {{ form.as_p }}

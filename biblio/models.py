@@ -5,7 +5,7 @@ class Artist(models.Model):
     music_type = models.CharField(max_length=150)
 
     def __str__(self):
-        return f"{self.name}, {self.music_type}"
+        return f"{self.id}"
 
 
 
@@ -16,7 +16,7 @@ class Album(models.Model):
     production_house = models.CharField(max_length=200)
 
     def __str__(self):
-        return f"{self.name}, {self.artist_name}, {self.release_date}"
+        return f"{self.id}"
 
 class Song(models.Model):
     album = models.ForeignKey(to='Album', on_delete=models.CASCADE)

@@ -2,20 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Creating Songs</title>
-    <style>
-
-        .container{text-align: left; padding: 30px 25px; }
-        body{text-align: center;}
-        section{text-align: center}
-    </style>
+    <title></title>
 </head>
 <body>
-    <h1> Formulaire de création de Song </h1>
-    <section>
+<h1> Formulaire de création d'Artist </h1>
+
+ <section>
             <div class="container">
 
-                <form action="{% url "adding_song" %}" method="POST">
+                <form action="{% url "adding_artist" %}" method="POST">
                     {% csrf_token %}
                     <table>
                          {{ form.as_p }}
@@ -27,7 +22,7 @@
 
                 </form>
             </div>
-        </section>
+ </section>
 
 </body>
 </html>

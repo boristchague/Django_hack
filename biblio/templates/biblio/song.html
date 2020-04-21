@@ -15,7 +15,7 @@
     <section>
             <div class="container">
 
-                <form action="{% url "adding_song" %}" method="POST">
+                <form action="{% url "adding_song" %}" method="POST" >
                     {% csrf_token %}
                     <table>
                          {{ form.as_p }}
@@ -23,7 +23,7 @@
 
 
 
-                    <input type="submit" value="Create">
+                    <input type="submit" value="Add Song" >
 
                 </form>
             </div>

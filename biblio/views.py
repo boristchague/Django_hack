@@ -7,42 +7,12 @@ from .forms import SongForm, ArtistForm, AlbumForm
 
 # Create your views here.
 
-def home(request):
-
-    return render(request, 'biblio/index.html')
-
-
-def login(request, year, month, day):
-    template = loader.get_template('biblio/index.html')
-
-    context = {"year": year,
-               "month": month,
-               "day": day}
-    #return render(request, "biblio/index.html", context=context)
-    return HttpResponse(template.render({"year": year,
-               "month": month,
-               "day": day}, request))
-
-
+#def home(request):
+#    return render(request, 'biblio/index.html')
 
 
 # Create your views here.
-def djangorocks(request):
-    return HttpResponse('<h1><center>hello Django !!C\'est une réponse de Jazzy</center></h1>')
-def picture_detail(request, name, year, month, day):
-    template = loader.get_template('biblio/index.html')
 
-    context = {
-            'pictures' : {
-                    'name' : 'Killer',
-                    'filename' : '_w3css_img_nature.jpg'
-                },
-            "year": year,
-            "month": month,
-            "day": day
-            
-    }
-    return HttpResponse(template.render(context, request))
 
 
 def showSong(request):
@@ -50,7 +20,7 @@ def showSong(request):
     song = Song.objects.all()
     album = Album.objects.all()
     artist = Artist.objects.all()
-    return  render(request, "biblio/song.html", context={'song': song, 'album': album, 'artist': artist})
+    return  render(request, "biblio/index.html", context={'song': song, 'album': album, 'artist': artist})
 
 
 
@@ -73,10 +43,10 @@ def add_song(request):
             #print(f"lyrics: {form.cleaned_data['lyrics']}")
 
 
-            return render(request, 'biblio/form.html', context={'form': form})
+            return render(request, 'biblio/song.html', context={'form': form})
     else:
         form = SongForm()
-    return render(request, 'biblio/form.html', context={'form': form})
+    return render(request, 'biblio/song.html', context={'form': form})
 
 
 
@@ -87,7 +57,7 @@ def add_artist(request):
         if request.POST.get('name') or request.POST.get('music_type'):
             form.name = request.POST.get('name')
             form.music_type = request.POST.get('music_type')
-            form.save()
+            form.save() 
 
             return render(request, 'biblio/artist.html', locals())
 

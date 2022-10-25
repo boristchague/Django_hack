@@ -5,12 +5,16 @@ from biblio.models import Song, Album, Artist
 from .forms import SongForm, ArtistForm, AlbumForm
 
 
-# Create your views here.
 
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import SongSerializer, AlbumSerializer, ArtistSerializer
+
+
+# Create your views here.
 #def home(request):
 #    return render(request, 'biblio/index.html')
-
-
 # Create your views here.
 
 
@@ -21,7 +25,6 @@ def showSong(request):
     album = Album.objects.all()
     artist = Artist.objects.all()
     return  render(request, "biblio/index.html", context={'song': song, 'album': album, 'artist': artist})
-
 
 
 def add_song(request):
@@ -85,6 +88,60 @@ def add_album(request):
         form = AlbumForm()
         return render(request, 'biblio/album.html', context={'form': form})
 
+
+
+@api_view(['GET', 'POST'])
+def song_list(request):
+    """//List all snippets, or creates a new snippets"""
+
+    if request.method == 'GET':
+        songs = Song.objects.all()
+        serializer = SongSerializer(songs, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = SongSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def album_list(request):
+    """//List all albums, or creates a new snippets"""
+
+    if request.method == 'GET':
+        album = Album.objects.all()
+        serializer = SongSerializer(album, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = AlbumSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def artist_list(request):
+    """//List all albums, or creates a new snippets"""
+
+    if request.method == 'GET':
+        artist = Artist.objects.all()
+        serializer = ArtistSerializer(artist, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = ArtistSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

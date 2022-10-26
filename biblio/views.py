@@ -114,7 +114,9 @@ def album_list(request):
 
     if request.method == 'GET':
         album = Album.objects.all()
-        serializer = SongSerializer(album, many=True)
+        print('album')
+        serializer = AlbumSerializer(album, many=True)
+        print('voir')
         return Response(serializer.data)
 
     elif request.method == 'POST':
